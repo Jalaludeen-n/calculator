@@ -1,34 +1,64 @@
+.title {
+    margin-bottom: 10px;
+    padding: 5px 0;
+    font-size: 40px;
+    font-weight: bold;
+    text-align: center;
+    color: red;
+    font-family: 'Cookie', cursive;
+}
+input[type=button] {
+    width: 60px;
+    height: 60px;
+    float: left;
+    padding: 0;
+    margin: 5px;
+    box-sizing: border-box;
+    background: #ecedef;
+    border: none;
+    font-size: 30px;
+    line-height: 30px;
+    border-radius: 50%;
+    font-weight: 700;
+    color: #5E5858;
+    cursor: pointer;
+}
+input[type=text] {
+    width: 270px;
+    height: 60px;
+    float: left;
+    padding: 0;
+    box-sizing: border-box;
+    border: none;
+    background: none;
+    color: red;
+    text-align: right;
+    font-weight: 700;
+    font-size: 60px;
+    line-height: 60px;
+    margin: 0 25px;
+}
 .calculator {
-    padding: 10px;
-    border-radius: 1em;
-    height: 380px;
-    width: 400px;
-    margin: auto;
-    background-color: #191b28;
-    box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+    background-color: #c0c0c0;
+    box-shadow: 0px 0px 0px 10px #666;
+    border: 5px solid black;
+    border-radius: 10px;
 }
-.display-box {
-    font-family: 'Orbitron', sans-serif;
-    background-color: #dcdbe1;
-    border: solid black 0.5px;
-    color: black;
-    border-radius: 5px;
-    width: 100%;
-    height: 65%;
+#display {
+    height: 40px;
+    text-align: right;
+    background-color: black;
+    border: 3px solid white;
+    font-size: 18px;
+    left: 2px;
+    top: 2px;
+    color: red;
 }
-.button {
-    font-family: 'Orbitron', sans-serif;
-    background-color: #64278f;
+.btnTop {
     color: white;
-    border: solid black 0.5px;
-    width: 100%;
-    border-radius: 5px;
-    height: 70%;
-    outline: none;
-}
-.button:active {
-    background: #e5e5e5;
-    -webkit-box-shadow: inset 0px 0px 5px #c1c1c1;
-    -moz-box-shadow: inset 0px 0px 5px #c1c1c1;
-    box-shadow: inset 0px 0px 5px #c1c1c1;
+    background-color: #6f6f6f;
+    font-size: 14px;
+    margin: auto;
+    width: 50px;
+    height: 25px;
 }
