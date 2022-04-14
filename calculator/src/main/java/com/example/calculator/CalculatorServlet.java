@@ -22,8 +22,9 @@ public class CalculatorServlet extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String result = request.getParameter("Input");
-        request.setAttribute("result", evaluate(result));
-        request.getRequestDispatcher("calculator.jsp").forward(request, response);
+        PrintWriter out = response.getWriter();
+        out.print(evaluate(result));
+        out.flush();
 
     }
     public int evaluate(String expression)

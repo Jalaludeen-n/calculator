@@ -4,10 +4,12 @@
 <head>
     <title>Calculator</title>
     <link href="/calculator.css" rel="stylesheet" type="text/css">
+    <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+
 
 </head>
 <body>
-<form  method="post" name="Calculator" class="calculator">
+<form method="post" name="Calculator" class="calculator">
     <table border="2" align="center" cellpadding="15" cellspacing="12" bgcolor="#c0c0c0">
         <tr>
             <td>
@@ -48,9 +50,9 @@
                        OnClick="Calculator.Input.value = ''">
                 <input type="button" name="zero" style="font-size:30px" value=" 0 "
                        OnClick="Calculator.Input.value += '0'">
-                <input type="submit" name="submit" style="font-size:30px" value=" = "
-                >
-<%--                type="submit" value="Calculate"--%>
+                <input type="button" name="submit" style="font-size:30px" value=" = "
+                       OnClick="showResult(Calculator.Input.value)">
+                <%--                type="submit" value="Calculate"--%>
                 <input type="button" name="div" style="font-size:30px" value=" / "
                        OnClick="Calculator.Input.value += ' / '">
                 <br>
@@ -61,4 +63,21 @@
 </form>
 
 </body>
+
 </html>
+<script type="text/javascript">
+    function showResult(value) {
+        $.ajax({
+            method: 'POST',
+            data: {Input: value},
+            success: function (result) {
+                $("#display").val(result);
+            },
+            error: function (jqXHR, exception) {
+                console.log('Error occured!!');
+            }
+        });
+
+    }
+
+</script>
