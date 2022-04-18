@@ -1,47 +1,20 @@
 package com.example.calculator;
 
-import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.Stack;
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
-
-public class CalculatorServlet extends HttpServlet {
-
-
-    public void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-            String result = "";
-            request.setAttribute("result", result);
-            request.getRequestDispatcher("calculator.jsp").forward(request, response);
-
-    }
-
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String result = request.getParameter("Input");
-        PrintWriter out = response.getWriter();
-        out.print(evaluate(result));
-        out.flush();
-
-    }
-    public int evaluate(String expression)
-    {
+public class CalculateService {
+    public int evaluate(String expression) {
         char[] tokens = expression.toCharArray();
         Stack<Integer> values = new
                 Stack<Integer>();
         Stack<Character> ops = new
                 Stack<Character>();
 
-        for (int i = 0; i < tokens.length; i++)
-        {
+        for (int i = 0; i < tokens.length; i++) {
             if (tokens[i] == ' ')
                 continue;
             if (tokens[i] >= '0' &&
-                    tokens[i] <= '9')
-            {
+                    tokens[i] <= '9') {
                 StringBuffer sbuf = new
                         StringBuffer();
                 while (i < tokens.length &&
@@ -51,14 +24,10 @@ public class CalculatorServlet extends HttpServlet {
                 values.push(Integer.parseInt(sbuf.
                         toString()));
                 i--;
-            }
-
-
-            else if (tokens[i] == '+' ||
+            } else if (tokens[i] == '+' ||
                     tokens[i] == '-' ||
                     tokens[i] == '*' ||
-                    tokens[i] == '/')
-            {
+                    tokens[i] == '/') {
                 while (!ops.empty() &&
                         hasPrecedence(tokens[i],
                                 ops.peek()))
@@ -75,9 +44,9 @@ public class CalculatorServlet extends HttpServlet {
                     values.pop()));
         return values.pop();
     }
+
     public static boolean hasPrecedence(
-            char op1, char op2)
-    {
+            char op1, char op2) {
         if (op2 == '(' || op2 == ')')
             return false;
         if ((op1 == '*' || op1 == '/') &&
@@ -88,10 +57,8 @@ public class CalculatorServlet extends HttpServlet {
     }
 
     public static int applyOp(char op,
-                              int b, int a)
-    {
-        switch (op)
-        {
+                              int b, int a) {
+        switch (op) {
             case '+':
                 return a + b;
             case '-':
@@ -100,9 +67,7 @@ public class CalculatorServlet extends HttpServlet {
                 return a * b;
             case '/':
                 if (b == 0)
-                    throw new
-                            UnsupportedOperationException(
-                            "Cannot divide by zero");
+                    return 0;
                 return a / b;
         }
         return 0;

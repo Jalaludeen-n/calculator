@@ -65,19 +65,3 @@
 </body>
 
 </html>
-<script type="text/javascript">
-    function showResult(value) {
-        $.ajax({
-            method: 'POST',
-            data: {Input: value},
-            success: function (result) {
-                $("#display").val(result);
-            },
-            error: function (jqXHR, exception) {
-                console.log('Error occured!!');
-            }
-        });
-
-    }
-
-</script>
