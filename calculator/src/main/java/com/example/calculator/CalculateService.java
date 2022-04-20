@@ -1,5 +1,8 @@
 package com.example.calculator;
 
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
+
 import java.util.Stack;
 
 public class CalculateService {

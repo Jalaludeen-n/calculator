@@ -1,12 +1,21 @@
 package com.example.calculator;
 
 import com.opensymphony.xwork2.ActionSupport;
-
+import org.springframework.beans.factory.annotation.Autowired;
 
 public class CalculateAction extends ActionSupport {
     private int output;
     private String input;
-    CalculateService cs=new CalculateService();
+    @Autowired
+    CalculateService calculateService;
+
+    public CalculateService getCalculateService() {
+        return calculateService;
+    }
+
+    public void setCalculateService(CalculateService calculateService) {
+        this.calculateService = calculateService;
+    }
 
     public void setOutput(int result) {
         this.output = result;
@@ -25,7 +34,7 @@ public class CalculateAction extends ActionSupport {
 
 
     public String execute(){
-        this.setOutput(cs.evaluate(input));
+        this.setOutput(calculateService.evaluate(input));
         return "success";
 
     }

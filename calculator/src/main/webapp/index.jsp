@@ -76,8 +76,7 @@
                 $("#display").val(result.output);
             },
             error: function (xhr, status, error) {
-                var err = JSON.parse(xhr.responseText);
-                alert(err.Message);
+                alert(error);
             }
         });
     }
