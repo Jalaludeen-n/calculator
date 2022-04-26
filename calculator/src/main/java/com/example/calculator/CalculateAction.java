@@ -6,8 +6,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 public class CalculateAction extends ActionSupport {
     private int output;
     private String input;
+
+
+
+
     @Autowired
     CalculateService calculateService;
+
+
 
     public CalculateService getCalculateService() {
         return calculateService;
@@ -34,7 +40,8 @@ public class CalculateAction extends ActionSupport {
 
 
     public String execute(){
-        this.setOutput(calculateService.evaluate(input));
+        int ans = calculateService.evaluate(input);
+        this.setOutput(ans);
         return "success";
 
     }
