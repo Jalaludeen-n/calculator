@@ -1,16 +1,12 @@
-package com.example.calculator.model;
+package com.example.calc.model;
 
 import javax.persistence.*;
-import java.io.Serializable;
-
-import java.io.Serializable;
-import java.util.Date;
-
 import javax.persistence.Entity;
+import java.io.Serializable;
 
 @Entity
 @Table
-public class Data {
+public class Data implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,7 +16,7 @@ public class Data {
     @Column(name = "Question")
     private String question;
 
-    @Column(name = "Answer")
+    @Column(name = "Answere")
     private String answer;
 //
 //    @Column(name = "created_date", nullable = false, updatable = false)

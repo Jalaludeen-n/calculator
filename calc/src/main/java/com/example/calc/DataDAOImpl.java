@@ -1,23 +1,35 @@
-package com.example.calculator.respository;
-import com.example.calculator.model.Data;
+package com.example.calc;
+
+import com.example.calc.model.Data;
+
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
+
 import java.util.List;
 
-@Repository
-@Transactional
-public class DataDAOImpl implements DataDAO {
-    @Autowired
+
+public class DataDAOImpl {
+
+
     SessionFactory sessionFactory;
 
-    @Override
     public void save(Data data) {
-        sessionFactory.getCurrentSession().save(data);
+        Session currentSession = sessionFactory.getCurrentSession();
+        currentSession.getTransaction().begin();
+        currentSession.merge(data);
+        currentSession.getTransaction().commit();
     }
-    @Override
-    public List<Data> list() {
-        return sessionFactory.getCurrentSession().createCriteria(Data.class).list();
+//    public List<Data> list() {
+//        return sessionFactory.getCurrentSession().createCriteria(Data.class).list();
+//    }
+    public SessionFactory getSessionFactory() {
+        return sessionFactory;
+    }
+
+    public void setSessionFactory(SessionFactory sessionFactory) {
+        this.sessionFactory = sessionFactory;
     }
 }

@@ -1,7 +1,4 @@
-package com.example.calculator;
-
-import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Service;
+package com.example.calc;
 
 import java.util.Stack;
 
